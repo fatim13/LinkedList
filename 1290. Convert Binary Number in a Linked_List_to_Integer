@@ -1,0 +1,36 @@
+Method 1: Using string StringBuilder
+
+class Solution {
+    public int getDecimalValue(ListNode head) {
+        ListNode temp = head;
+
+        StringBuilder sb =  new StringBuilder();
+
+        while(temp != null){
+          sb.append(temp.val);
+          temp = temp.next;
+        }
+         int decimalNumber = Integer.parseInt(sb.toString(), 2);
+        return decimalNumber;
+    }
+}
+
+method 2: while converting bN to int multiply with base 2.
+class Solution {
+    public int getDecimalValue(ListNode head) {
+        ListNode temp = head;
+
+        int sum = 0;
+
+        while(temp != null){
+          sum = sum*2 + temp.val; //multipy with 2 when converting binary into int
+          temp = temp.next;
+        }
+        return sum;
+    }
+}
+
+Loop	Character	Operation	  Result
+1	    ‘1’	        1	          1
+2	    ‘0’	        (1x2) + 0	  2
+3	    ‘1’	        (2*2) + 1	  5
