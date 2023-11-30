@@ -1,0 +1,56 @@
+https://leetcode.com/problems/intersection-of-two-linked-lists/solutions/1093014/c-four-different-solutions/
+
+method1:brute force appraoch
+ //TC:O(n*m)
+ //SC:O(1)
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode a = headA;
+    
+        while(a!=null){
+             ListNode b = headB;
+
+             while(b!=null){
+
+                 if(a==b){
+                     return b;
+                 }
+                 b = b.next;
+             }
+             a = a.next;
+        }
+
+         return null;  
+    }
+}
+
+
+//method3:  Two-Pointers Solution
+//making length equal 
+ TC:  O(m + n)
+ SC: O(n)
+
+imp:
+https://leetcode.com/problems/intersection-of-two-linked-lists/solutions/49785/java-solution-without-knowing-the-difference-in-len/
+
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+
+        ListNode a = headA;
+        ListNode b = headB;
+         
+        while(a!=b){
+            if(a==null) a = headB;
+            else a = a.next;
+
+            if(b == null) b = headA;
+            else b = b.next;
+        }
+         return a;    
+    }
+} 
+
+using hash
+
+
+
