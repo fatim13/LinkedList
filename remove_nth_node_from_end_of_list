@@ -1,0 +1,33 @@
+
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+       //create one dummy node
+       ListNode dummy = new ListNode(0);
+       dummy.next = head;
+       ListNode slow = dummy, fast = dummy;
+
+       // treavel fast upto the n+1 position
+       for(int i = 1; i<=n+1; i++){
+           fast = fast.next;
+       }
+
+       while(fast!=null){
+           slow = slow.next;
+           fast = fast.next;
+       }
+       //at this point slow is one standing previus to the
+       //node to be deleted
+
+       slow.next = slow.next.next;
+       
+
+       //dummy.next contains actual head;
+       return dummy.next;
+    }
+}
+//Space Complexity: O(1)
+//Time comlexity : O(n)
+
+The technique used in this code is often referred to as the "Two Pointer" or "Fast and Slow Pointer" technique. Specifically, 
+it's used for finding the nth node from the end of a linked list efficiently.
+

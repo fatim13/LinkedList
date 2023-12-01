@@ -1,0 +1,13 @@
+class Solution
+{
+    void deleteNode(Node del)
+    {
+        //copy the next data into current
+        
+        del.data = del.next.data;
+        
+        del.next = del.next.next;
+    }
+}
+
+TC,SC:O(1)
