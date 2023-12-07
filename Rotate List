@@ -1,0 +1,43 @@
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+if (head == null || head.next == null || k == 0) {
+            return head;
+        }
+
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode slow = dummy, fast = dummy;
+
+        int n = 0;
+        // Count the number of nodes in the list
+        ListNode temp = head;
+        while (temp != null) {
+            temp = temp.next;
+            n++;
+        }
+
+        k = k % n;
+
+        // Move fast pointer to the k+1th node from the beginning
+       for (int i = 1; i <= k; i++) {
+            fast = fast.next;
+        }
+
+        // Move both slow and fast pointers until fast reaches the end
+        while (fast.next != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        // Update pointers to perform rotation
+        fast.next = dummy.next;
+        dummy.next = slow.next;
+        slow.next = null;
+
+        return dummy.next;
+    }
+}
+
+
+//TC:O(n)
+//SC:O(1)

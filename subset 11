@@ -1,0 +1,40 @@
+class Solution {
+
+  public List<List<Integer>> solve(int[] arr, List<Integer> subset, List<List<Integer>> res, int i){
+
+         if (i == arr.length) {
+            res.add(new ArrayList<>(subset));
+            return res;
+        }else
+        {
+           //pick i the element
+           subset.add(arr[i]);
+           solve(arr,subset,res,i+1);
+
+           subset.remove(subset.size() - 1);
+
+           //skip ith element
+           //in skiping part skip the all the element which is same
+           while(i+1<arr.length && arr[i]==arr[i+1]){
+             i++;
+           }
+           solve(arr,subset,res,i+1);
+           
+        }
+
+    return res;
+    }
+
+
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+         List<List<Integer>> res = new ArrayList<>();
+
+        List<Integer> subset = new ArrayList<>();
+
+        int i = 0;
+
+        Arrays.sort(nums);
+
+        return solve(nums,subset,res,i);
+    }
+}
